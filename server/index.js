@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 Connection();
 app.use(cors({
-    origin: 'https://pokefights.netlify.app',
+    origin: '*'
 }));
 
 const port = process.env.PORT || 8000;
