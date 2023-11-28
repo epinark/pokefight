@@ -35,12 +35,12 @@ export default function PopupGfg({ selectedPokemon }) {
   return (
     <div>
       <Popup
-        trigger={<button className="w-14 text-slate-100"> Info </button>}
+        trigger={<button className="w-14 text-slate-100 "> Info </button>}
         modal
         nested
       >
         {(close) => (
-          <div className="bg-gradient-to-tr from-red-900 to-red-500 ">
+          <div className="bg-gradient-to-tr from-red-900 to-red-500 rounded-xl">
             <div className="flex justify-center ">
               <div className="flex flex-col">
                 <h1 className="font-bold flex justify-center p-9 text-5xl text-white">

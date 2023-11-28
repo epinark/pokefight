@@ -7,6 +7,9 @@
     height: 100vh;
 }
 
+.popup-content {
+    border-radius: 0.75rem;
+}
 
 @media (max-width: 576px) {
     .popup-content {
