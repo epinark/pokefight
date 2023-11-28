@@ -10,6 +10,15 @@ function Pokedex({
   matchingResults,
   searchTerm,
 }) {
+  const [imageLoading, setImageLoading] = useState(true);
+  useEffect(() => {
+    setImageLoading(true);
+  }, [detailedPokemon]);
+
+  const handleImageLoad = () => {
+    setImageLoading(false);
+  };
+
   const getTypeBackgroundColorClass = (type) => {
     switch (type) {
       case "fire":
@@ -97,8 +106,10 @@ function Pokedex({
     </div>
   );
   return (
-    <div className="flex flex-col grow bg-gradient-to-tr from-gray-600 to-gray-300">
-      <h1 className="text-center text-2xl font-bold pt-4">My Pokedex</h1>
+    <div className="flex flex-col py-5 grow bg-gradient-to-tr from-gray-600 to-gray-300">
+      <h1 className="text-center text-white text-4xl font-bold py-4">
+        My Pokedex
+      </h1>
       <section className="flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8 p-6">
           {searchTerm

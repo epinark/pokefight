@@ -5,6 +5,7 @@ import Battle from "./component/Battle";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 import Leaderboard from "./component/Leaderboard";
+import Loading from "./component/Loading";
 import { saveGameResult } from "./component/api";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -15,8 +16,10 @@ function App() {
   const [matchingResults, setMatchingResults] = useState([]);
   const [globalPokemon, setGlobalPokemon] = useState([]);
   const [detailedPokemon, setDetailedPokemon] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const randomOffset = Math.floor(Math.random() * 1118);
     fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
       .then((response) => response.json())
       .then((data) => {
@@ -27,6 +30,7 @@ function App() {
         Promise.all(promises)
           .then((detailedData) => {
             setDetailedPokemon(detailedData);
+            setLoading(false);
           })
           .catch((error) => {
             console.error(error);
@@ -34,6 +38,7 @@ function App() {
       })
       .catch((error) => {
         console.error(error);
+        setLoading(false);
       });
   }, []);
 
@@ -70,16 +75,20 @@ function App() {
           <Route
             path="/"
             element={
-              globalPokemon &&
-              detailedPokemon && (
-                <Pokedex
-                  onSelectPokemon={handleSelectPokemon}
-                  searchResults={searchResults}
-                  matchingResults={matchingResults}
-                  globalPokemon={globalPokemon}
-                  detailedPokemon={detailedPokemon}
-                  searchTerm={searchTerm}
-                />
+              loading ? (
+                <Loading />
+              ) : (
+                globalPokemon &&
+                detailedPokemon && (
+                  <Pokedex
+                    onSelectPokemon={handleSelectPokemon}
+                    searchResults={searchResults}
+                    matchingResults={matchingResults}
+                    globalPokemon={globalPokemon}
+                    detailedPokemon={detailedPokemon}
+                    searchTerm={searchTerm}
+                  />
+                )
               )
             }
           />

@@ -21,8 +21,10 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="bg-gradient-to-tr from-gray-600 to-gray-300 flex flex-col justify-center items-center pt-4 grow">
-      <h1 className="text-3xl font-bold mb-4">Leaderboard</h1>
+    <div className="bg-gradient-to-tr from-gray-600 to-gray-300 flex flex-col items-center pt-4 grow">
+      <h1 className="text-center text-white text-4xl font-bold py-4">
+        Leaderboard
+      </h1>
       <ul>
         {leaderboard.map((game, index) => (
           <li
