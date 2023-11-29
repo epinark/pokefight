@@ -29,9 +29,12 @@ const Leaderboard = () => {
         {leaderboard.map((game, index) => (
           <li
             key={index}
-            className="px-2 py-1 rounded-lg text-white bg-green-700 flex m-1"
+            className="px-2 py-1 rounded-lg text-white bg-gray-400 flex m-1 font-bold"
           >
-            Game {index + 1}: {game.winner} vs {game.looser}
+            Game {index + 1}: &nbsp;{" "}
+            <span className="text-green-800 font-bold">{game.winner}</span>
+            &nbsp;VS&nbsp;
+            <span className="text-red-600 font-bold">{game.looser}</span>
           </li>
         ))}
       </ul>

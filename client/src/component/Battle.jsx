@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { saveGameResult } from "./api";
+import { saveGameResult, getLeaderboard } from "./api";
 import Leaderboard from "./Leaderboard";
+import Loading from "./Loading";
 
 const Battle = ({ userPokemon }) => {
   const [randomOpponent, setRandomOpponent] = useState(null);
   const [result, setResult] = useState("");
   const [startButtonStatus, setStartButtonStatus] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchRandomPokemon();
@@ -24,6 +26,7 @@ const Battle = ({ userPokemon }) => {
       return data;
     } catch (error) {
       console.error("Error fetching Pokémon data:", error);
+      setLoading(false);
       throw error;
     }
   };
@@ -35,6 +38,7 @@ const Battle = ({ userPokemon }) => {
       setRandomOpponent(randomPokemonData);
     } catch (error) {
       console.error("Error fetching random Pokémon data:", error);
+      setLoading(false);
       throw error;
     }
   };
@@ -62,6 +66,7 @@ const Battle = ({ userPokemon }) => {
       await saveGameResult(gameResult);
     } catch (error) {
       console.error("Error saving game result:", error);
+      setLoading(false);
     }
 
     setStartButtonStatus(true);
@@ -86,7 +91,7 @@ const Battle = ({ userPokemon }) => {
   };
 
   if (!userPokemon || !randomOpponent) {
-    return <h2>Loading...</h2>;
+    return <Loading />;
   }
 
   const getTypeBackgroundColorClass = (type) => {

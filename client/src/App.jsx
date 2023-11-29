@@ -17,10 +17,10 @@ function App() {
   const [globalPokemon, setGlobalPokemon] = useState([]);
   const [detailedPokemon, setDetailedPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchMessage, setSearchMessage] = useState(true);
 
   useEffect(() => {
-    const randomOffset = Math.floor(Math.random() * 1118);
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=60&offset=0")
       .then((response) => response.json())
       .then((data) => {
         setGlobalPokemon(data.results);
@@ -103,7 +103,10 @@ function App() {
               )
             }
           />
-          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route
+            path="/leaderboard"
+            element={<Leaderboard userPokemon={userPokemon} />}
+          />
         </Routes>
       </BrowserRouter>
       <Footer />
