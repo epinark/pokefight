@@ -64,7 +64,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col grow">
+    <div className="flex flex-col grow h-screen">
       <BrowserRouter>
         <Header
           searchTerm={searchTerm}

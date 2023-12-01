@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-    display: flex;
-    height: 100vh;
-}
 
 .popup-content {
     border-radius: 0.75rem;

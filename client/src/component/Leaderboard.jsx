@@ -21,7 +21,7 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="bg-gradient-to-tr from-gray-600 to-gray-300 flex flex-col items-center pt-4 grow">
+    <div className="bg-gradient-to-tr from-gray-600 to-gray-300 flex flex-col items-center py-4 grow">
       <h1 className="text-center text-white text-4xl font-bold py-4">
         Leaderboard
       </h1>
