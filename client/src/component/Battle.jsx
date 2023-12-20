@@ -174,7 +174,7 @@ const Battle = ({ userPokemon }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-evenly gap-8">
+      <div className="flex justify-evenly gap-8 py-4">
         <button
           className="mt-6 flex w-1/4 cursor-pointer items-center justify-center gap-2 rounded-xl bg-red-500 p-2 px-12 py-6 text-xl text-white shadow-lg shadow-indigo-500/40 hover:bg-red-600"
           onClick={handleBattle}
@@ -190,7 +190,7 @@ const Battle = ({ userPokemon }) => {
         </button>
       </div>
       {startButtonStatus && (
-        <div className="mt-8 flex items-center justify-center"></div>
+        <div className="flex items-center justify-center"></div>
       )}
       {result && (
         <div className="mx-auto my-8 flex h-24 w-1/2 items-center justify-center overflow-hidden rounded-xl bg-slate-800 text-center">
